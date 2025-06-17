@@ -13,12 +13,20 @@
     <p id="result"></p>
 
     <script src="bplusTree.js"></script>
-    <script>
-        function searchMovie() {
-            const id = document.getElementById("movieId").value;
-            const result = tree.search(parseInt(id));
-            document.getElementById("result").innerText = result ? `Filme encontrado: ${result}` : "Filme não encontrado.";
-        }
-    </script>
+    
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        initializeTree();
+    });
+
+    async function searchMovie() {
+        const id = parseInt(document.getElementById("movieId").value);
+        const result = tree.search(id);
+
+        document.getElementById("result").innerText = result
+            ? `Filme encontrado: ${result.title}`
+            : "Filme não encontrado.";
+    }
+</script>
 </body>
 </html>

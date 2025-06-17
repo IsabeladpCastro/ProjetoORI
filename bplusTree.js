@@ -1,3 +1,5 @@
+let tree; 
+
 async function loadDataset() {
     try {
         const response = await fetch("filmes.json");
@@ -64,13 +66,15 @@ class BPlusTree {
 }
 
 async function initializeTree() {
-    const tree = new BPlusTree(3);
+    tree = new BPlusTree(3);
     const movies = await loadDataset();
 
-    movies.forEach(movie => tree.insert(movie.name.toLowerCase(), movie));
-    console.log("Filmes inseridos na Árvore B+!");
+    movies.forEach(movie => {
+        const key = parseInt(movie.id);
+        tree.insert(key, movie);
+    });
 
-    return tree;
+    console.log("Filmes inseridos na Árvore B+!");
 }
 
 async function searchMovie(name) {
