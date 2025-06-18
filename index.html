@@ -1,32 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Filmes</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>Busca de Filmes com B+ Tree</title>
 </head>
 <body>
-    <h1>Catálogo de Filmes - Árvore B+</h1>
-    <input type="text" id="movieId" placeholder="Digite o ID do Filme">
-    <button onclick="searchMovie()">Buscar Filme</button>
-    <p id="result"></p>
+  <h1>Buscar Filme por ID</h1>
+  <input type="text" id="searchInput" placeholder="Digite o ID do filme" />
+  <button onclick="searchMovie()">Buscar</button>
 
-    <script src="bplusTree.js"></script>
-    
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        initializeTree();
-    });
+  <div id="result"></div>
+  <script src="bplusTree.js"></script>
 
-    async function searchMovie() {
-        const id = parseInt(document.getElementById("movieId").value);
-        const result = tree.search(id);
+  <script>
 
-        document.getElementById("result").innerText = result
-            ? `Filme encontrado: ${result.title}`
-            : "Filme não encontrado.";
+    let tree;
+
+    function safeParse(str) {
+      if (typeof str !== "string") return null;
+      if (str === "null" || str === "" || str === "None") return null;
+      const cleaned = str
+        .replace(/None/g, "null")
+        .replace(/True/g, "true")
+        .replace(/False/g, "false")
+        .replace(/'/g, '"');
+      try {
+        return JSON.parse(cleaned);
+      } catch {
+        return null;
+      }
     }
-</script>
+
+    async function initializeTree() {
+      const response = await fetch('filmes.json');
+      const filmes = await response.json();
+
+      tree = new BPlusTree(3);
+
+      filmes.forEach(filme => {
+        try {
+          filme.genres = safeParse(filme.genres);
+          filme.production_companies = safeParse(filme.production_companies);
+          filme.belongs_to_collection = safeParse(filme.belongs_to_collection);
+
+          tree.insert(parseInt(filme.id), filme);
+        } catch (err) {
+          console.error("Erro ao processar filme ID:", filme.id, err);
+        }
+      });
+
+      console.log("Filmes inseridos:", filmes.length);
+    }
+
+    function searchMovie() {
+      const input = document.getElementById("searchInput").value;
+      const id = parseInt(input);
+      const resultDiv = document.getElementById("result");
+
+      if (isNaN(id)) {
+        resultDiv.innerText = "Digite um ID válido.";
+        return;
+      }
+
+      const filme = tree.search(id);
+
+      if (filme) {
+        resultDiv.innerHTML = `
+          <h2>🎬 ${filme.title} (${filme.release_date})</h2>`;
+      } else {
+        resultDiv.innerText = "Filme não encontrado.";
+      }
+    }
+
+    // Inicializa a árvore após carregar a página
+    document.addEventListener("DOMContentLoaded", initializeTree);
+  </script>
 </body>
 </html>
