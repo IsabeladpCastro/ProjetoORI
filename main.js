@@ -26,7 +26,7 @@ async function fetchPosterURL(title) {
 }
 
 async function initializeTree() {
-  const response = await fetch('filmesORI.json'); // substitua se for outro nome
+  const response = await fetch('filmesORI.json');
   const filmes = await response.json();
 
   tree = new BPlusTree(3);

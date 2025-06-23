@@ -1,4 +1,3 @@
-// bplusTree.js
 class BPlusTree {
   constructor(order = 3) {
     this.order = order;
@@ -13,7 +12,7 @@ class BPlusTree {
     return this.store.get(key) || null;
   }
 
-  // Extra: busca por prefixo (útil para auto completar)
+  //Tentativa de fazer uma buscar por aproximação
   searchPrefix(prefix) {
     const results = [];
     for (let [key, value] of this.store.entries()) {
