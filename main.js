@@ -52,35 +52,43 @@ async function searchMovie() {
     <style>
       p {color: white;}
     </style>
-      <p><strong>Digite um título válido</strong></p>;
-    `
+    <p><strong>Digite um título válido</strong></p>
+    `;
     return;
   }
 
-  const filme = tree.search(input);
+  const filmes = tree.searchPrefix(input);
 
-  if (filme) {
+  if (!filmes || filmes.length === 0) {
+    resultDiv.innerHTML = `
+    <style>
+      p {color: white;}
+    </style>
+    <p><strong>Filme não encontrado</strong></p>
+    `;
+    return;
+  }
+
+  resultDiv.innerHTML = "";
+
+  for (const filme of filmes) {
     const posterUrl = await fetchPosterURL(filme.title);
 
-    resultDiv.innerHTML = `
+    resultDiv.innerHTML += `
       <style>
         p {color: white;}
-        h2 {color: white; font-size: 45px; font-family: "Arial"; weight: 700;}
+        h2 {color: white; font-size: 45px; font-family: "Arial"; font-weight: 700;}
       </style>
       <h2>${filme.title}</h2>
       <img src="${posterUrl || 'https://via.placeholder.com/200x300?text=Imagem+Indisponível'}" 
            alt="Poster de ${filme.title}" 
            width="200" height="300" />
-           <p><strong>Sinopse:</strong> ${filme.overview}</p>
+      <p><strong>Sinopse:</strong> ${filme.overview}</p>
+      <hr/>
     `;
-  } else {
-    resultDiv.innerHTML = `
-    <style>
-      p {color: white;}
-    </style>
-      <p><strong>Filme não encontrado</strong></p>;
-    `
   }
 }
+
+
 
 document.addEventListener("DOMContentLoaded", initializeTree);
