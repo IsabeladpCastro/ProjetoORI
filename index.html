@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<style>
+  body {background-image: linear-gradient(90deg, rgba(10, 3, 26, 1), rgba(52, 29, 76, 1));}
+  h1 {color: white;}
+  input {background-color: rgba(60, 47, 86, 1); border-radius: 10px; width: 386px; height: 43px; color:white; font-size: 24px; border: 0px}
+  ::placeholder {color: white; font-size: 24px; text-align: center;}
+  :focus::placeholder {color: grey; font-size: 24px; text-align: center; border-color: grey;}
+  button {background-color: rgba(60, 47, 86, 1);  border-color: grey; color: white; margin-left: -12px; border-bottom-right-radius: 10px; border-top-right-radius: 10px; height: 45px; font-size: 24px}
+</style>
 <head>
   <meta charset="UTF-8" />
   <title>Busca de Filmes</title>
@@ -7,11 +15,21 @@
 </head>
 <body>
   <h1>Buscar Filme</h1>
-  <input type="text" id="searchInput" placeholder="Digite o título do filme" />
-  <button onclick="searchMovie()">Buscar</button>
+  <input type="text" id="searchInput" placeholder="Search for movies" />
+  <button id= "myBtn" onclick="searchMovie()">Buscar</button>
   <div id="result"></div>
 
+  <script>
+    var input = document.getElementById("searchInput");
+    input.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("myBtn").click();
+      }
+    });
+  </script>
   <script src="bplusTree.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
+
