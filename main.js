@@ -62,6 +62,7 @@ async function searchMovie() {
       <img src="${posterUrl || 'https://via.placeholder.com/200x300?text=Imagem+Indisponível'}" 
            alt="Poster de ${filme.title}" 
            width="200" height="300" />
+           <p><strong>Sinopse:</strong> ${filme.overview}</p>
     `;
   } else {
     resultDiv.innerText = "Filme não encontrado.";
