@@ -1,39 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<style>
-  body {background-image: linear-gradient(90deg, rgba(10, 3, 26, 1), rgba(52, 29, 76, 1)); padding-top: 130px; padding-left: 50px;}
-  #topBar{background-color: rgba(52, 29, 76, 1); height: 80px; width: 100%; position: fixed; top: 0; left: 0; border-bottom: 1px solid white; }
-  h1 {color: white;}
-  input {background-color: rgba(60, 47, 86, 1); padding-left: 48px; padding-right: 17px; border-radius: 10px; width: 330px; height: 43px; 
-        color:white; font-size: 24px; border: 0px; position: absolute; top: 18px; left: 1000px;}
-  ::placeholder {color: white; font-size: 24px; text-align: center;}
-  :focus::placeholder {color: grey; font-size: 24px; text-align: center; border: none;}
-  #searchBtn {background: none; border: none; cursor: pointer; padding: 0; height: 24px; position: absolute; width: 24px; top: 27px; left: 1015px;}
-  .Btn {top: 27px; position: absolute; cursor: pointer;  border: none;  border-radius: 5px; font-size: 16px; font-weight: 400; height: 32px; 
-        display: flex; align-items: center; justify-content: center; width: 61px;}
-  #homeBtn {
-    background-color: white; color: rgba(60, 47, 86, 1); left: 100px;}
-    #moviesBtn {background-color: rgba(52, 29, 76, 1);
-    color: grey; left: 180px;}
-    #contactBtn {background-color: rgba(52, 29, 76, 1); color: grey; left: 260px}
-</style>
 <head>
   <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  
   <title>Busca de Filmes</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <div id="topBar">
-  <button id="homeBtn" class="Btn">Home</button>
-  <button id="moviesBtn" class="Btn">Movies</button>
-  <button id="contactBtn" class="Btn">Contact</button>
-  <input type="text" id="searchInput" placeholder="Search for movies" />
-    <button id= "searchBtn" onclick="searchMovie()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+  <div id="leftMenu">
+    <button id="homeBtn" class="Btn">Home</button>
+  </div>
+  
+  <div id="searchContainer">
+    <input type="text" id="searchInput" placeholder="Search for movies" />
+    <button id="searchBtn" onclick="searchMovie()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
         <path d="M10 2a8 8 0 105.293 14.293l5.707 5.707 1.414-1.414-5.707-5.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
       </svg>
     </button>
   </div>
+</div>
+
+
   <div id="result"></div>
 
   <script>

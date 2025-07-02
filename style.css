@@ -1,0 +1,123 @@
+body {
+  background-image: linear-gradient(90deg, rgba(10, 3, 26, 1), rgba(52, 29, 76, 1));
+  padding-top: 130px;
+  margin: 0;
+}
+
+#topBar {
+  background-color: rgba(52, 29, 76, 1);
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+#leftMenu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 61px;
+}
+
+#homeBtn {
+  background-color: white;
+  color: rgba(60, 47, 86, 1);
+}
+
+#searchContainer {
+  position: relative;
+  width: 330px;
+}
+
+#searchInput {
+  background-color: rgba(60, 47, 86, 1);
+  padding-left: 15px;
+  padding-right: 40px; /* Espaço para a lupa */
+  border-radius: 10px;
+  width: 100%;
+  height: 35px; /* Altura reduzida para evitar texto sobrando */
+  color: white;
+  font-size: 16px; /* Fonte menor e proporcional */
+  line-height: 35px; /* Igual à altura, para centralizar o texto */
+  text-align: center;
+  border: 0;
+  box-sizing: border-box;
+}
+
+::placeholder {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+:focus::placeholder {
+  color: grey;
+}
+
+#searchBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  padding: 0;
+}
+
+@media (min-width: 100px) and (max-width: 480px) {
+  body {
+    padding-top: 100px;
+  }
+  #searchContainer {
+    width: 260px;
+  }
+  #searchInput {
+    font-size: 12px;
+    height: 28px;
+  }
+  .Btn {
+    width: auto;
+    padding: 0 8px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  #searchContainer {
+    width: 300px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  #searchContainer {
+    width: 300px;
+  }
+}
+
+@media (min-width: 1025px) {
+  #searchContainer {
+    width: 330px;
+  }
+}
