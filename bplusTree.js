@@ -12,7 +12,6 @@ class BPlusTree {
     return this.store.get(key) || null;
   }
 
-  //Tentativa de fazer uma buscar por aproximação
   searchPrefix(prefix) {
     const results = [];
     for (let [key, value] of this.store.entries()) {
