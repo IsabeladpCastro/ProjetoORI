@@ -22,7 +22,12 @@ body {
 #leftMenu {
   display: flex;
   align-items: center;
-  gap: 10px;
+}
+
+#logo {
+  height: 80px;
+  margin-right: 0px;
+  vertical-align: middle;
 }
 
 .Btn {
