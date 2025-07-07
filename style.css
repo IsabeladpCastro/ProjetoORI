@@ -1,15 +1,13 @@
-/* ======== Estilo base ======== */
+/* === ESTILO GLOBAL === */
 body {
   background-image: linear-gradient(90deg, rgba(10, 3, 26, 1), rgba(52, 29, 76, 1));
   padding-top: 130px;
+  overflow-x: hidden;
   margin: 0;
-  font-family: Arial, sans-serif;
-  font-size: clamp(14px, 2vw, 18px);
-  color: white;
   box-sizing: border-box;
 }
 
-/* ======== TopBar fixa ======== */
+/* Topo */
 #topBar {
   background-color: rgba(52, 29, 76, 1);
   height: 80px;
@@ -23,23 +21,19 @@ body {
   justify-content: space-between;
   padding: 0 15px;
   box-sizing: border-box;
-  z-index: 1000;
 }
 
-/* ======== Menu à esquerda ======== */
 #leftMenu {
   display: flex;
   align-items: center;
 }
 
-/* ======== Logo ======== */
 #logo {
   height: 80px;
   margin-right: 0;
   vertical-align: middle;
 }
 
-/* ======== Botões ======== */
 .Btn {
   cursor: pointer;
   border: none;
@@ -58,11 +52,10 @@ body {
   color: rgba(60, 47, 86, 1);
 }
 
-/* ======== Barra de busca ======== */
+/* Campo de busca */
 #searchContainer {
   position: relative;
   width: 330px;
-  max-width: 100%;
 }
 
 #searchInput {
@@ -103,76 +96,142 @@ body {
   padding: 0;
 }
 
-/* ======== Área de resultados ======== */
-#result {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+/* === CONTEÚDO DO FILME === */
+.filme-card {
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  padding: 20px;
-  box-sizing: border-box;
-  margin-top: 20px;
-}
-
-/* Estilo genérico para cada item de resultado */
-#result > div {
-  background-color: rgba(255, 255, 255, 0.08);
   border-radius: 10px;
-  padding: 10px;
-  text-align: center;
+  padding: 20px;
   color: white;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: rgba(30, 30, 50, 0.7);
+  box-sizing: border-box;
 }
 
-/* Imagem do pôster */
-#result img {
-  width: 100%;
+.filme-card img {
+  flex-shrink: 0;
+  width: 300px;
+  max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  object-fit: cover;
+  border-radius: 10px;
 }
 
-/* Texto (por exemplo, título) */
-#result p, #result h3 {
-  margin: 10px 0 0;
-  font-size: 0.95em;
+.filme-info {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
 }
 
-/* ======== Responsividade para mobile ======== */
-@media (max-width: 480px) {
-  #topBar {
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    padding: 10px;
-    gap: 10px;
-  }
+/* === BOTÕES PLAY/WATCH === */
+.botoes-play {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0; /* remove padding que causava overflow */
+}
 
-  #logo {
-    height: 60px;
+.botoes-play button {
+  flex: 1 1 140px;
+  max-width: 200px;
+  min-width: 120px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+}
+
+.botoes-play button:first-child {
+  background-color: #007bff;
+  color: white;
+}
+
+.botoes-play button:last-child {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 768px) {
+  body {
+    padding-top: 100px;
   }
 
   #searchContainer {
-    width: 90%;
+    width: 260px;
   }
 
   #searchInput {
-    font-size: 14px;
-    height: 30px;
+    font-size: 12px;
+    height: 28px;
   }
 
   .Btn {
     width: auto;
-    padding: 5px 10px;
+    padding: 0 8px;
     font-size: 14px;
   }
 
-  #result {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  .filme-card {
+    flex-direction: column;
+    max-width: 90vw;
+    padding: 15px;
+  }
+
+  .filme-card img {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .filme-info {
+    min-width: 100%;
     gap: 15px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 0.9rem;
     padding: 10px;
   }
 
-  #result > div {
-    padding: 8px;
+  .avaliacao svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .botoes-play {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .botoes-play button {
+    width: 100%;
+    max-width: 90vw;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  #searchContainer {
+    width: 300px;
+  }
+}
+
+@media (min-width: 1025px) {
+  #searchContainer {
+    width: 330px;
   }
 }
