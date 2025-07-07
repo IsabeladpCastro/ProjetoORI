@@ -1,7 +1,7 @@
 let tree;
 
-const GOOGLE_API_KEY = 'AIzaSyAFIolpzjsPcgsivsMwNVA3PU26L8Iu6T0';
-const GOOGLE_CX = '16dde36c2f7fa4562';
+const GOOGLE_API_KEY = 'AIzaSyB-V0dZUkyG2w6_ExtHQJ43XrptWoczgao';
+const GOOGLE_CX = '31cf80f32cc0e4e49';
 
 function safeParse(str) {
   try {
