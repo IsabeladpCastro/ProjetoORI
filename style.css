@@ -106,7 +106,6 @@ body {
   color: white;
   max-width: 900px;
   margin: 0 auto;
-  background-color: rgba(30, 30, 50, 0.7);
   box-sizing: border-box;
 }
 
@@ -135,7 +134,7 @@ body {
   margin-top: 10px;
   width: 100%;
   box-sizing: border-box;
-  padding: 0; /* remove padding que causava overflow */
+  padding: 10px; /* remove padding que causava overflow */
 }
 
 .botoes-play button {
@@ -234,4 +233,34 @@ body {
   #searchContainer {
     width: 330px;
   }
+}
+
+#splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(90deg, rgba(10, 3, 26, 1), rgba(52, 29, 76, 1));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: white;
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  transition: opacity 0.5s ease;
+}
+
+#splash.hide {
+  opacity: 0;
+}
+
+.splash-logo {
+  width: 120px; /* ajuste conforme necessário */
+  height: auto;
+  margin-bottom: 20px;
+  animation: fadeIn 1.2s ease-in-out;
 }

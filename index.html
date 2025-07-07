@@ -10,10 +10,16 @@
   <link rel="shortcut icon" type="imagex/png" href="./img/iconMovie.png">
 </head>
 <body>
-<div id="topBar">
-  <div id="leftMenu">
-    <img src="img/IMG_4278.png" alt="Logo" id="logo" />
+  <div id="splash">
+    <img src="./img/IMG_4278.png" alt="Logo SearchMovie" class="splash-logo" />
+    <h1>SearchMovie</h1>
+    <p>Carregando...</p>
   </div>
+
+  <div id="topBar">
+    <div id="leftMenu">
+      <img src="img/IMG_4278.png" alt="Logo" id="logo" />
+    </div>
   
   <div id="searchContainer">
     <input type="text" id="searchInput" placeholder="Search for movies" />
@@ -35,6 +41,15 @@
         event.preventDefault();
         document.getElementById("searchBtn").click();
       }
+    });
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const splash = document.getElementById("splash");
+        splash.classList.add("hide");
+        setTimeout(() => splash.style.display = "none", 500); // remove após fade
+        document.getElementById("main").style.display = "block";
+      }, 2000);
     });
   </script>
   <script src="bplusTree.js"></script>
