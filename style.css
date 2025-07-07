@@ -1,9 +1,15 @@
+/* ======== Estilo base ======== */
 body {
   background-image: linear-gradient(90deg, rgba(10, 3, 26, 1), rgba(52, 29, 76, 1));
   padding-top: 130px;
   margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: clamp(14px, 2vw, 18px);
+  color: white;
+  box-sizing: border-box;
 }
 
+/* ======== TopBar fixa ======== */
 #topBar {
   background-color: rgba(52, 29, 76, 1);
   height: 80px;
@@ -17,19 +23,23 @@ body {
   justify-content: space-between;
   padding: 0 15px;
   box-sizing: border-box;
+  z-index: 1000;
 }
 
+/* ======== Menu à esquerda ======== */
 #leftMenu {
   display: flex;
   align-items: center;
 }
 
+/* ======== Logo ======== */
 #logo {
   height: 80px;
-  margin-right: 0px;
+  margin-right: 0;
   vertical-align: middle;
 }
 
+/* ======== Botões ======== */
 .Btn {
   cursor: pointer;
   border: none;
@@ -48,21 +58,23 @@ body {
   color: rgba(60, 47, 86, 1);
 }
 
+/* ======== Barra de busca ======== */
 #searchContainer {
   position: relative;
   width: 330px;
+  max-width: 100%;
 }
 
 #searchInput {
   background-color: rgba(60, 47, 86, 1);
   padding-left: 15px;
-  padding-right: 40px; /* Espaço para a lupa */
+  padding-right: 40px;
   border-radius: 10px;
   width: 100%;
-  height: 35px; /* Altura reduzida para evitar texto sobrando */
+  height: 35px;
   color: white;
-  font-size: 16px; /* Fonte menor e proporcional */
-  line-height: 35px; /* Igual à altura, para centralizar o texto */
+  font-size: 16px;
+  line-height: 35px;
   text-align: center;
   border: 0;
   box-sizing: border-box;
@@ -91,48 +103,76 @@ body {
   padding: 0;
 }
 
-@media (min-width: 100px) and (max-width: 480px) {
-  body {
-    background-image: linear-gradient(90deg, rgba(10, 3, 26, 1), rgba(52, 29, 76, 1));
-    padding-top: 100px;
+/* ======== Área de resultados ======== */
+#result {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+/* Estilo genérico para cada item de resultado */
+#result > div {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+/* Imagem do pôster */
+#result img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Texto (por exemplo, título) */
+#result p, #result h3 {
+  margin: 10px 0 0;
+  font-size: 0.95em;
+}
+
+/* ======== Responsividade para mobile ======== */
+@media (max-width: 480px) {
+  #topBar {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 10px;
+    gap: 10px;
   }
+
+  #logo {
+    height: 60px;
+  }
+
   #searchContainer {
-    width: 260px;
+    width: 90%;
   }
+
   #searchInput {
-    font-size: 12px;
-    height: 28px;
+    font-size: 14px;
+    height: 30px;
   }
+
   .Btn {
     width: auto;
-    padding: 0 8px;
+    padding: 5px 10px;
     font-size: 14px;
   }
-}
 
-@media (min-width: 481px) and (max-width: 768px) {
-  body {
-    background-image: linear-gradient(90deg, rgba(10, 3, 26, 1), rgba(52, 29, 76, 1));
-   }
-  #searchContainer {
-    width: 300px;
+  #result {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    padding: 10px;
   }
-}
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  body {
-    background-image: linear-gradient(90deg, rgba(10, 3, 26, 1), rgba(52, 29, 76, 1));
-   }
-  #searchContainer {
-    width: 300px;
-  }
-}
-
-@media (min-width: 1025px) {
-  body {
-    background-image: linear-gradient(90deg, rgba(10, 3, 26, 1), rgba(52, 29, 76, 1));
-   }
-  #searchContainer {
-    width: 330px;
+  #result > div {
+    padding: 8px;
   }
 }
