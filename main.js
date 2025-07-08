@@ -79,19 +79,6 @@ async function searchMovie() {
       const rating = Math.floor(Math.random() * 5) + 1;
 
       html += `
-      <style>
-        .filme-card {display: flex; align-items: flex-start; gap: 35px; border-radius: 10px; padding: 20px; color: white; max-width: 900px;}
-        .filme-info {display: flex; flex-direction: column; gap: 50px;}
-        .filme-info > div{display: flex; gap: 10px}
-        p {color: white; margin-top: 10px; max-width: 600px; word-wrap: break-word; white-space: normal;}
-        h2 {color: white; font-size: 45px; font-family: "Arial"; font-weight: 700; margin-bottom: 10px;}
-        .avaliacao {display: flex; gap: 4px; margin-top: -30px; margin-bottom: -20px;}
-        .avaliacao svg {width: 20px; height: 20px;}
-        .botoes-play{border: 0px; border-radius: 40px; width: 149px; height: 36px; color: white; font-family: "SF Pro"; font-weight: 400; font-size: 15px; cursor: pointer;}
-        #playBtn{background-color: rgba(0, 122, 255, 1); display: flex; align-items: center; justify-content: center; gap: 5px; padding: 0 12px;}
-        #playBtn svg {width: 25px;}
-        #watchLaterBtn{background-color: rgba(153, 173, 203, 0.17);}
-      </style>
       <div class="filme-card">
         <img src="${posterUrl || "https://via.placeholder.com/200x300?text=Imagem+Indisponível"}" alt="Poster de ${filme.title}" width="300" height="400" />
         <div class="filme-info">

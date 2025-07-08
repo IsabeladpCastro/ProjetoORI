@@ -99,8 +99,9 @@ body {
 /* === CONTEÚDO DO FILME === */
 .filme-card {
   display: flex;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 35px;
   border-radius: 10px;
   padding: 20px;
   color: white;
@@ -121,8 +122,42 @@ body {
   flex: 1 1 300px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
   min-width: 0;
+}
+
+.filme-info > div {
+  display: flex;
+  gap: 10px;
+}
+
+p {
+  color: white;
+  margin-top: 10px;
+  max-width: 600px;
+  word-wrap: break-word;
+  white-space: normal;
+  padding: 10px;
+}
+
+h2 {
+  color: white;
+  font-size: 45px;
+  font-family: "Arial";
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.avaliacao {
+  display: flex;
+  gap: 4px;
+  margin-top: -30px;
+  margin-bottom: -20px;
+}
+
+.avaliacao svg {
+  width: 20px;
+  height: 20px;
 }
 
 /* === BOTÕES PLAY/WATCH === */
@@ -134,7 +169,7 @@ body {
   margin-top: 10px;
   width: 100%;
   box-sizing: border-box;
-  padding: 10px; /* remove padding que causava overflow */
+  padding: 10px;
 }
 
 .botoes-play button {
@@ -150,14 +185,37 @@ body {
   box-sizing: border-box;
 }
 
-.botoes-play button:first-child {
-  background-color: #007bff;
+.botoes-play button:first-child,
+#playBtn {
+  background-color: rgba(0, 122, 255, 1);
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 12px;
+  border-radius: 40px;
+  width: 149px;
+  height: 36px;
+  font-family: "SF Pro";
+  font-weight: 400;
+  font-size: 15px;
 }
 
-.botoes-play button:last-child {
-  background-color: rgba(255, 255, 255, 0.1);
+#playBtn svg {
+  width: 25px;
+}
+
+.botoes-play button:last-child,
+#watchLaterBtn {
+  background-color: rgba(153, 173, 203, 0.17);
   color: white;
+  border-radius: 40px;
+  width: 149px;
+  height: 36px;
+  font-family: "SF Pro";
+  font-weight: 400;
+  font-size: 15px;
 }
 
 /* === RESPONSIVIDADE === */
@@ -203,7 +261,6 @@ body {
 
   p {
     font-size: 0.9rem;
-    padding: 10px;
   }
 
   .avaliacao svg {
@@ -219,7 +276,6 @@ body {
   .botoes-play button {
     width: 100%;
     max-width: 90vw;
-    box-sizing: border-box;
   }
 }
 
@@ -235,6 +291,7 @@ body {
   }
 }
 
+/* Splash screen */
 #splash {
   position: fixed;
   top: 0;
@@ -259,7 +316,7 @@ body {
 }
 
 .splash-logo {
-  width: 120px; /* ajuste conforme necessário */
+  width: 120px;
   height: auto;
   margin-bottom: 20px;
   animation: fadeIn 1.2s ease-in-out;
