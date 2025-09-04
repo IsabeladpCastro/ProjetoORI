@@ -28,6 +28,8 @@ A Árvore-B+ é uma estrutura de dados eficiente para sistemas com grandes volum
 
 ## 👩‍💻 Autora
 
-Feito com ♥️ por Isabela Castro
+Feito com ♥️ por:
+Beatriz Russo
+Isabela Castro
 Curso: Ciência da Computação
 Disciplina: Organização e Recuperação de Informações
